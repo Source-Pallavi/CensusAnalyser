@@ -34,7 +34,7 @@ public class TestCases
             indiannCensusAnalyser.loadIndiaCensusData(WRONG_PATH);
         } catch (CensusAnalyserException e)
         {
-            Assert.assertEquals(ExceptionType.FILE_NOT_FOUND,e.getMessage());
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND,e.getMessage());
         }
 
 

@@ -4,7 +4,7 @@ public class CensusAnalyserException extends Exception
 {
 
    public  enum ExceptionType {
-        FILE_NOT_FOUND;
+        FILE_NOT_FOUND,PARSE_PROBLEM;
     }
 
     ExceptionType type;
@@ -15,7 +15,7 @@ public class CensusAnalyserException extends Exception
     }
 
     public CensusAnalyserException(String message, ExceptionType type, Throwable cause) {
-        super(message);
+        super(message,cause);
         this.type = type;
     }
 }
