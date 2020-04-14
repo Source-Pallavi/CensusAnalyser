@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -13,20 +14,26 @@ import java.util.List;
 
 public class IndiannCensusAnalyser
 {
-    public static  int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException, IOException
-    {
-        Reader Reader;
-        Reader = Files.newBufferedReader(Paths.get(csvFilePath));
-        CsvToBeanBuilder<IndiaCensusCSV> cadToBeanBuilder = new CsvToBeanBuilder<IndiaCensusCSV>(Reader).withType(IndiaCensusCSV.class).withIgnoreLeadingWhiteSpace(true);
-      CsvToBean csvToBean=cadToBeanBuilder.build();
-        Iterator<IndiaCensusCSV> iterator=csvToBean.iterator();
-        int countEnteries= 0;
-        while (iterator.hasNext())
+    public  int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
+
+        try {
+            Reader Reader = Files.newBufferedReader(Paths.get(csvFilePath));
+            CsvToBeanBuilder<IndiaCensusCSV> cadToBeanBuilder = new CsvToBeanBuilder<IndiaCensusCSV>(Reader);
+            CsvToBean csvToBean = cadToBeanBuilder.withType(IndiaCensusCSV.class).withIgnoreLeadingWhiteSpace(true).build();
+            Iterator<IndiaCensusCSV> iterator = csvToBean.iterator();
+            int countEnteries = 0;
+            while (iterator.hasNext())
+            {
+                countEnteries++;
+                IndiaCensusCSV dataCSV = iterator.next();
+            }
+            return countEnteries;
+        } catch (FileNotFoundException e)
         {
-            countEnteries++;
-            IndiaCensusCSV dataCSV=iterator.next();
+            throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
+        } catch (IOException e) {
+            throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.FILE_NOT_FOUND);
 
         }
-        return countEnteries;
     }
 }
