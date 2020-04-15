@@ -3,6 +3,7 @@ package web.Brdagelabz.CensusAnalyser;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import jdk.nashorn.internal.runtime.ListAdapter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.util.stream.StreamSupport;
 
 public class IndiannCensusAnalyser
 {
+    private Object censusList;
+
     public  int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
 
         try {
@@ -46,6 +49,7 @@ public class IndiannCensusAnalyser
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         } catch (CSVBuilderException e) {
+            
             throw new CensusAnalyserException(e.getMessage(), e.type.name());
         }
 
@@ -68,10 +72,11 @@ public class IndiannCensusAnalyser
 
     }
     private void sort( Comparator<IndiaCensusDAO> censusComparator) {
+        ListAdapter censusList = null;
         for (int i = 0; i < censusList.size() - 1; i++) {
             for (int j = 0; j < censusList.size()-i-1; j++) {
-                IndiaCensusDAO census1 = censusList.get(j);
-                IndiaCensusDAO census2 = censusList.get(j + 1);
+                IndiaCensusDAO census1 = (IndiaCensusDAO) censusList.get(j);
+                IndiaCensusDAO census2 = (IndiaCensusDAO) censusList.get(j + 1);
                 if (censusComparator.compare(census1, census2) > 0) {
                     censusList.set(j, census2);
                     censusList.set(j + 1, census1);
