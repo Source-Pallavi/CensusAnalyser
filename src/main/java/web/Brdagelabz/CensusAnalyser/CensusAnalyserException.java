@@ -3,8 +3,11 @@ package web.Brdagelabz.CensusAnalyser;
 public class CensusAnalyserException extends Exception
 {
 
-   public  enum ExceptionType {
-        FILE_NOT_FOUND,PARSE_PROBLEM;
+    public CensusAnalyserException(String message, String name) {
+    }
+
+    public  enum ExceptionType {
+        FILE_NOT_FOUND,PARSE_PROBLEM, FILE_EXTENSION_MISMATCH,FILE_DELIMITER_MISMATCH,NO_CENSUS_DATA,CENSUS_FILE_PROBLEM;
     }
 
     ExceptionType type;
