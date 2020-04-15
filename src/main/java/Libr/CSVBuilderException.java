@@ -1,4 +1,4 @@
-package web.Brdagelabz.CensusAnalyser;
+package Libr;
 
 public class CSVBuilderException extends Exception {
     enum ExceptionType {
