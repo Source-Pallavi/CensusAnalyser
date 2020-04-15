@@ -17,7 +17,8 @@ import static web.Brdagelabz.CensusAnalyser.CensusAnalyserException.*;
 
 public class TestCases
 {
-    private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
+
+
     private static final String WRONG_PATH = "./src/main/resources/IndiaStateCensusData.csv";
     private static final String HEADER_INCORRECT= "./src/test/resources/ChangeHeader.csv";
     private static final String INCORRECT_FILE_TYPE= "./src/test/resources/IndiaStateCensusData.pdf";
@@ -81,6 +82,8 @@ public class TestCases
             int numOfStateCode = indiannCensusAnalyser.loadIndianStateCode(INDIAN_STATE_CSV_FILE_PATH);
             Assert.assertEquals(37,numOfStateCode);
         }
+
+        
 
         @Test
         public void givenStateData_WhenSortedState_ShouldReturnSortResult() throws CensusAnalyserException {
