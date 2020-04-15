@@ -46,9 +46,12 @@ public class IndiannCensusAnalyser {
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
-        } catch (CSVBuilderException e) {
-
-            throw new CensusAnalyserException(e.getMessage(), e.type.name());
+        } catch(RuntimeException e){
+            throw new CensusAnalyserException("Delimiter mismatch",
+                    CensusAnalyserException.ExceptionType.FILE_DELIMITER_MISMATCH);
+        }
+        catch (CSVBuilderException e) {
+            throw new CensusAnalyserException(e.getMessage(),e.type.name());
         }
 
     }
@@ -88,4 +91,5 @@ public class IndiannCensusAnalyser {
 
         }
     }
+
 }
