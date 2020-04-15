@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aaa1fbce-c42d-4c1d-97b3-2565df9f56d3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/OpenCSVBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/OpenCSVBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +13,16 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -248,18 +256,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java</url>
-          <line>24</line>
+          <line>23</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java</url>
-          <line>31</line>
+          <line>30</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java</url>
-          <line>19</line>
-          <properties class="web.Brdagelabz.CensusAnalyser.IndiannCensusAnalyser" method="loadIndiaCensusData">
+          <line>18</line>
+          <properties class="web.Brdagelabz.CensusAnalyser.IndiannCensusAnalyser">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="18" />
