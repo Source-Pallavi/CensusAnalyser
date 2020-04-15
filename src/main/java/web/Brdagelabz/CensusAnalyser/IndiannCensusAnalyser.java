@@ -102,20 +102,7 @@ public class IndiannCensusAnalyser {
         }
 
 
-        private void sort( Comparator<IndiaCensusDAO> censusComparator) {
-            for (int i = 0; i < censusList.size() - 1; i++) {
-                for (int j = 0; j < censusList.size()-i-1; j++) {
-                    IndiaCensusDAO census1 = censusList.get(j);
-                    IndiaCensusDAO census2 = censusList.get(j + 1);
-                    if (censusComparator.compare(census1, census2) <0) {
-                        censusList.set(j, census2);
-                        censusList.set(j + 1, census1);
-                    }
 
-                }
-
-            }
-        }
 }
 
     public String getMostPopulationDensitySqPerkm() throws CensusAnalyserException {
@@ -128,4 +115,55 @@ public class IndiannCensusAnalyser {
         return sortedStateCensusJson;
 
     }
+    public String getMostPopulationDensitySqPerkm() throws CensusAnalyserException {
+        if(censusList==null || censusList.size() == 0){
+            throw new CensusAnalyserException("No census data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusDAO> censusComparator = Comparator.comparing(census -> census.densityPerSqKm);
+        this.sortDescending(censusComparator);
+        String sortedStateCensusJson = new Gson().toJson(this.censusList);
+        return sortedStateCensusJson;
+
     }
+    public String getStateWiseSortedCensusData() throws CensusAnalyserException {
+        if(censusList==null || censusList.size() == 0){
+            throw new CensusAnalyserException("No census data",CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusDAO> censusComparator = Comparator.comparing(census -> census.state);
+        this.sortAscending(censusComparator);
+        String sortedStateCensusJson = new Gson().toJson(this.censusList);
+        return sortedStateCensusJson;
+
+    }
+    private void sortAscending( Comparator<IndiaCensusDAO> censusComparator) {
+        for (int i = 0; i < censusList.size() - 1; i++) {
+            for (int j = 0; j < censusList.size()-i-1; j++) {
+                IndiaCensusDAO census1 = censusList.get(j);
+                IndiaCensusDAO census2 = censusList.get(j + 1);
+                if (censusComparator.compare(census1, census2) >0) {
+                    censusList.set(j, census2);
+                    censusList.set(j + 1, census1);
+                }
+
+            }
+
+        }
+    }
+
+
+    private void sortDescending( Comparator<IndiaCensusDAO> censusComparator) {
+        for (int i = 0; i < censusList.size() - 1; i++) {
+            for (int j = 0; j < censusList.size()-i-1; j++) {
+                IndiaCensusDAO census1 = censusList.get(j);
+                IndiaCensusDAO census2 = censusList.get(j + 1);
+                if (censusComparator.compare(census1, census2) <0) {
+                    censusList.set(j, census2);
+                    censusList.set(j + 1, census1);
+                }
+
+            }
+
+        }
+    }
+
+}

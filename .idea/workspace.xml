@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aaa1fbce-c42d-4c1d-97b3-2565df9f56d3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/CSVBuilderException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Libr/CSVBuilderException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/CensusAnalyserFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Libr/CensusAnalyserFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/ICSVBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Libr/ICSVBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/IndiannCensusAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web/Brdagelabz/CensusAnalyser/OpenCSVBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Libr/OpenCSVBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestCases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestCases.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
