@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import web.Brdagelabz.CensusAnalyser.CensusAnalyserException;
 import web.Brdagelabz.CensusAnalyser.IndiaCensusCSV;
+import web.Brdagelabz.CensusAnalyser.IndiaStateCodeCSV;
 import web.Brdagelabz.CensusAnalyser.IndiannCensusAnalyser;
 
 import java.io.FileNotFoundException;
@@ -87,6 +88,29 @@ public class TestCases
             Assert.assertEquals("Andhra Pradesh",censusCSV[0].state);
         }
 
-
+    @Test
+    public void givenStateData_WhenSortedStateCode_ShouldReturnSortResult() throws CensusAnalyserException {
+        IndiannCensusAnalyser indiannCensusAnalyser = new IndiannCensusAnalyser();
+        indiannCensusAnalyser.loadIndiaCensusData(INDIA_STATE_CODE);
+        String sortedCensusData = indiannCensusAnalyser.getStateWiseSortedCensusData();
+        IndiaStateCodeCSV[] censusCSV = new Gson().fromJson(sortedCensusData, IndiaStateCodeCSV[].class);
+        Assert.assertEquals("AD",censusCSV[0].stateCode);
+    }
+    @Test
+    public void givenStateData_MostPopulousState() throws CensusAnalyserException {
+        IndiannCensusAnalyser indiannCensusAnalyser = new IndiannCensusAnalyser();
+        indiannCensusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        String sortedCensusData = indiannCensusAnalyser.getStateWiseSortedCensusData();
+        IndiaCensusCSV[] censusCSV = new Gson().fromJson( sortedCensusData, IndiaCensusCSV[].class);
+        Assert.assertEquals(199812341,censusCSV[0].population);
+    }
+    @Test
+    public void givenStateData_MostPopulousDensityState() throws CensusAnalyserException {
+        IndiannCensusAnalyser indiannCensusAnalyser = new IndiannCensusAnalyser();
+        indiannCensusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
+        String sortedCensusData = indiannCensusAnalyser.getMostPopulationDensitySqPerkm();
+        IndiaCensusCSV[] censusCSV = new Gson().fromJson( sortedCensusData, IndiaCensusCSV[].class);
+        Assert.assertEquals(1102,censusCSV[0].densityPerSqKm);
+    }
 
 }
