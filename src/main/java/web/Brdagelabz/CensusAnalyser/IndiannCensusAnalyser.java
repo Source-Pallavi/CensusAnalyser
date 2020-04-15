@@ -21,7 +21,8 @@ public class IndiannCensusAnalyser {
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
 
         try {
-            Reader Reader = Files.newBufferedReader(Paths.get(csvFilePath));
+            Reader Reader;
+             Reader = Files.newBufferedReader(Paths.get(csvFilePath));
             CsvToBeanBuilder<IndiaCensusCSV> cadToBeanBuilder = new CsvToBeanBuilder<IndiaCensusCSV>(Reader);
             CsvToBean csvToBean = cadToBeanBuilder.withType(IndiaCensusCSV.class).withIgnoreLeadingWhiteSpace(true).build();
             Iterator<IndiaCensusCSV> iterator = csvToBean.iterator();
@@ -53,7 +54,7 @@ public class IndiannCensusAnalyser {
     }
 
 
-    
+
     private <E> int getCount(Iterator<E> iterator) {
         Iterable<E> csvIterable = () -> iterator;
         int numOfEnteries = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
