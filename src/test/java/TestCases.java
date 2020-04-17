@@ -35,12 +35,31 @@ public class TestCases
 //{
 
 //}
+
+
+
     @Test
     public void checkTheNumOfRecordsReturnsHappy() throws IOException, CensusAnalyserException {
           IndiannCensusAnalyser indiannCensusAnalyser= new IndiannCensusAnalyser();
         Assert.assertEquals(29, indiannCensusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH));
     }
+    @Test
+    public void givenMostPopolouDensitysStateBetween_India_and_US() throws CensusAnalyserException {
+        indiannCensusAnalyser.loadCensusData(CensusAnalyser.Country.INDIA,INDIA_CENSUS_CSV_FILE_PATH);
+        IndiannCensusAnalyser indiannCensusAnalyser= new IndiannCensusAnalyser();
+        censusUSAnalyser.loadCensusData(CensusAnalyser.Country.US,US_CENSUS_CSV_FILE_PATH);
 
+        String INDsortedCensusData = censusINDAnalyser.getPopulationDensityWiseSortedState();
+        IndiaCensusCSV[] censusINDCSV = new Gson().fromJson(INDsortedCensusData, IndiaCensusCSV[].class);
+        String state=censusINDCSV[0].state;
+        String USsortedCensusData = censusUSAnalyser.getPopulationDensityWiseSortedState();
+        USCensusCSV[] censusUSCSV = new Gson().fromJson(USsortedCensusData, USCensusCSV[].class);
+
+
+        if (censusINDCSV[0].populationDensity<censusUSCSV[0].populationDensity)
+            state=censusUSCSV[0].state;
+        Assert.assertEquals("District of Columbia",state);
+    }
 
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
